@@ -1,0 +1,312 @@
+/* ─── Tokens ─────────────────────────────────────────── */
+:root {
+    --tea: #C4873A;
+    --tea-dark: #7A4F1D;
+    --cream: #FAF6EE;
+    --ink: #1E1209;
+    --yes: #2E7D32;
+    --no: #8B1A1A;
+    --border: #D4B896;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-mono: 'DM Mono', monospace;
+}
+
+/* ─── Reset ──────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ─── Base ───────────────────────────────────────────── */
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 28px, #C4873A08 29px), repeating-linear-gradient(90deg, transparent, transparent 28px, #C4873A08 29px);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+/* ─── Layout ─────────────────────────────────────────── */
+.page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 1.5rem;
+}
+
+/* ─── Header ─────────────────────────────────────────── */
+header {
+    text-align: center;
+    padding: 3rem 0 1rem;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--tea);
+    margin-bottom: 0.75rem;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+    h1 em {
+        font-style: italic;
+        color: var(--tea);
+    }
+
+/* ─── Divider ────────────────────────────────────────── */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    color: var(--tea);
+}
+
+    .divider::before,
+    .divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--tea), transparent);
+        opacity: 0.4;
+    }
+
+/* ─── Teacup ─────────────────────────────────────────── */
+.teacup {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0 1rem;
+}
+
+/* ─── Answer ─────────────────────────────────────────── */
+.answer-block {
+    text-align: center;
+    padding: 1.5rem 1rem 0.5rem;
+}
+
+.answer-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tea);
+    margin-bottom: 1.5rem;
+}
+
+.big-answer {
+    font-size: clamp(7rem, 28vw, 12rem);
+    font-weight: 700;
+    line-height: 1;
+    transition: color 0.5s ease;
+}
+
+    .big-answer.yes {
+        color: var(--yes);
+    }
+
+    .big-answer.no {
+        color: var(--no);
+    }
+
+.answer-sub {
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.55;
+    margin-top: 2.5rem;
+    min-height: 1.5rem;
+}
+
+/* ─── Local time ─────────────────────────────────────── */
+.local-time {
+    text-align: center;
+    margin: 0.5rem 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.local-time-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tea);
+    opacity: 0.7;
+}
+
+.local-time-clock {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    color: var(--tea-dark);
+    letter-spacing: 0.06em;
+}
+/* ─── Section heading ────────────────────────────────── */
+.section-heading {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tea);
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+/* ─── Map ────────────────────────────────────────────── */
+.map-wrap {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.map-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--tea-dark);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot-tea {
+    background: var(--tea);
+}
+
+.dot-rest {
+    background: #C8C0B6;
+}
+
+/* ─── Timezone pills ─────────────────────────────────── */
+.tz-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 3rem;
+    margin-top: 2.0rem;
+}
+
+.tz-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.3rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.tz-pill.active {
+    border-color: var(--yes);
+    background: #F0FFF0;
+}
+
+@keyframes pip-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tz-pip {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #C8C0B6;
+    flex-shrink: 0;
+    transition: background 0.3s;
+}
+
+.tz-pill.active .tz-pip {
+    background: var(--yes);
+    box-shadow: 0 0 8px var(--yes);
+    animation: pip-pulse 2s infinite ease-in-out;
+}
+
+.tz-time {
+    color: var(--tea);
+}
+
+/* ─── Footer ─────────────────────────────────────────── */
+footer {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--tea);
+    opacity: 0.45;
+    padding: 1rem 0 2.5rem;
+    letter-spacing: 0.08em;
+}
+
+/* ─── Steam animation ────────────────────────────────── */
+@keyframes steam {
+    0% {
+        transform: translateY(0) scaleX(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-18px) scaleX(1.4);
+        opacity: 0;
+    }
+}
+
+.steam-1 {
+    animation: steam 1.8s 0.0s ease-out infinite;
+}
+
+.steam-2 {
+    animation: steam 1.8s 0.6s ease-out infinite;
+}
+
+.steam-3 {
+    animation: steam 1.8s 1.1s ease-out infinite;
+}
