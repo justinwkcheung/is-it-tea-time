@@ -10,6 +10,7 @@ const YES_QUIPS = [
     "Milk in first, or you're wrong.",
     "Earl Grey is the correct answer.",
     "Do not let this moment pass.",
+    "Matcha? Yes, please."
 ];
 
 const NO_QUIPS = [
@@ -53,7 +54,8 @@ function TeaCup() {
 function Answer({ tea }) {
     return (
         <div className="answer-block">
-            <p className="answer-label">Right now, where you are</p>
+            {/*<p className="answer-label">Is it afternoon tea time right now, where you are?</p>*/}
+            <h1>Is it <em>afternoon tea</em> time where you are?</h1>
             <div className={`big-answer ${tea ? 'yes' : 'no'}`}>{tea ? 'YES' : 'NO'}</div>
             <p className="answer-sub">{tea ? pickQuip(YES_QUIPS) : pickQuip(NO_QUIPS)}</p>
         </div>
@@ -137,7 +139,8 @@ function App() {
         <div className="page">
             <header>
                 <p className="eyebrow">A Tea-riffic question</p>
-                <h1>Is it <em>afternoon tea</em> time?</h1>
+                {/*<h1>Is it <em>afternoon tea</em> time?</h1>*/}
+                <div className="teacup"><TeaCup /></div>
             </header>
 
             <div className="local-time">
@@ -147,13 +150,11 @@ function App() {
 
             <div className="divider">☕</div>
 
-            <div className="teacup"><TeaCup /></div>
-
             <Answer tea={localTea} />
 
             <div className="divider">🍵</div>
 
-            <p className="section-heading">Where are they having afternoon tea right now?</p>
+            <p className="section-heading">Who is having afternoon tea right now?</p>
             <div className="tz-row">
                 {TIMEZONES.map(z => (
                     <TimezonePill key={z.label} label={z.label} time={formatTime(z.tz)} active={isTeaTime(z.tz)} />
@@ -167,7 +168,7 @@ function App() {
             {/*<p className="section-heading">Around the world</p>*/}
             {/*<WorldMap zones={zones} />*/}
 
-            <footer>3:00–5:00 pm · updates every second</footer>
+            <footer>Afternoon tea is 3:00–5:00 pm local time</footer>
         </div>
     );
 }
